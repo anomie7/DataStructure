@@ -4,4 +4,11 @@ public class Term {
 	public int coef; //계수
 	public int expo; //지수
 
+	int calcTerm(int x) {
+		return (int) (coef * Math.pow(x, expo));
+	}
+	
+	void printTerm() {
+		System.out.print(coef + "x^" + expo);
+	}
 }

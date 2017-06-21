@@ -28,7 +28,7 @@ public class Code06 {
 				}else {
 					int c = kb.nextInt();
 					int e = kb.nextInt();
-					addTerm(polys[index], c, e);
+					polys[index].addTerm(c, e);;
 				}
 			}
 			else if(command.equals("calc")){
@@ -38,7 +38,7 @@ public class Code06 {
 					System.out.println("No such polynomial exists.");
 				} else {
 					int x = kb.nextInt();
-					int result = calPolynomial(polys[index], x);
+					int result = polys[index].calPolynomial(x);
 					System.out.println(result);
 				}
 			}
@@ -48,68 +48,14 @@ public class Code06 {
 				if(index == -1) {
 					System.out.println("No such polynomial exists.");
 				} else {
-					printPolynomial(polys[index]);
+					polys[index].printPolynomial();
 				}
 			}
 			else if(command.equals("exit")){
 				break;
 			}
+		}
 			kb.close();
-		}
-	}
-
-	private static int calPolynomial(Polynomial p, int x) {
-		// TODO Auto-generated method stub
-		int result = 0;
-		for(int i = 0; i < p.nTerms; i++){
-			result += calcTerm(p.terms[i], x);
-		}
-		return result;
-	}
-
-	private static int calcTerm(Term term, int x) {
-		// TODO Auto-generated method stub
-		return (int) (term.coef * Math.pow(x, term.expo));
-	}
-
-	private static void printPolynomial(Polynomial p) {
-		// TODO Auto-generated method stub
-		for(int i = 0; i < p.nTerms; i++){
-			printTerm( p.terms[i]);
-			System.out.print("+");
-		}
-		System.out.println();
-	}
-
-	private static void printTerm(Term term) {
-		// TODO Auto-generated method stub
-		System.out.print(term.coef + "x^" + term.expo);
-	}
-
-	private static void addTerm(Polynomial p, int c, int e) {
-		int index = findTerm(p, e);
-		if (index != -1){
-			p.terms[index].coef += c;
-		}else {
-			int i = p.nTerms-1;
-			while(i >= 0 && p.terms[i].expo < e){
-				p.terms[i+1] = p.terms[i];
-				i--;
-			}
-			p.terms[i+1] = new Term();
-			p.terms[i+1].coef = c;
-			p.terms[i+1].expo = e;
-			p.nTerms++;
-		}
-	}
-
-	private static int findTerm(Polynomial p, int e) {
-		// TODO Auto-generated method stub
-		for (int i = 0; i < p.nTerms && p.terms[i].expo >= e; i++ ){
-			if(p.terms[i].expo == e)
-				return i;
-		}
-		return -1;
 	}
 
 	private static int find(char name) {
