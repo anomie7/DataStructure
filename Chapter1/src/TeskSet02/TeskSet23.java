@@ -6,6 +6,7 @@ public class TeskSet23 {
 	static String[] name = new String[1000];
 	static String[] number = new String[1000];
 	static int n = 0;
+	@SuppressWarnings("resource")
 	public static void main(String[] args){
 		try {
 			Scanner inFile = new Scanner(new File("PhoneBook.txt"));

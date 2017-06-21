@@ -18,6 +18,7 @@ public class TeskSet22 {
 			}else if(command.equals("exit")){
 				break;
 			}
+			stdIn.close();
 		}
 	}
 
@@ -58,6 +59,7 @@ public class TeskSet22 {
 		}
 	}
 
+	@SuppressWarnings("unused")
 	private static void printIdx(TreeMap<Character, Integer> idx) {
 		// TODO Auto-generated method stub
 		Set<Character> keys = idx.keySet();
