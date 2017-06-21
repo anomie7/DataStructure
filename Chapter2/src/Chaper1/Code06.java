@@ -52,8 +52,9 @@ public class Code06 {
 				}
 			}
 			else if(command.equals("exit")){
-				
+				break;
 			}
+			kb.close();
 		}
 	}
 
