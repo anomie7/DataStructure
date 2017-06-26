@@ -5,6 +5,15 @@ public class Polynomial {
 	public Term[] terms;
 	public int nTerms;
 	
+	public Polynomial(){
+		terms = new Term[100];
+		nTerms = 0;
+	}
+	public Polynomial(char name){
+		this();
+		this.name = name;
+	}
+
 	int calPolynomial(int x) {
 		int result = 0;
 		for(int i = 0; i < nTerms; i++){
@@ -31,15 +40,12 @@ public class Polynomial {
 				terms[i+1] = terms[i];
 				i--;
 			}
-			terms[i+1] = new Term();
-			terms[i+1].coef = c;
-			terms[i+1].expo = e;
+			terms[i+1] = new Term(c, e);
 			nTerms++;
 		}
 	}
 
 	int findTerm(int e) {
-		// TODO Auto-generated method stub
 		for (int i = 0; i < nTerms && terms[i].expo >= e; i++ ){
 			if(terms[i].expo == e)
 				return i;
