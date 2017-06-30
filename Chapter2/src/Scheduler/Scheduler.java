@@ -20,6 +20,8 @@ public class Scheduler {
 					handleOneDayAdd();
 				}else if(selEvent.equalsIgnoreCase("duration")){
 					handelDurationAdd();
+				}else if(selEvent.equalsIgnoreCase("deadline")){
+					handelDeadlineAdd();
 				}
 			}else if(command.equals("list")){
 				for(int i = 0; i < n; i++){
@@ -33,6 +35,17 @@ public class Scheduler {
 		}
 	}
 	
+	private void handelDeadlineAdd() {
+		System.out.print("until ");
+		String until = stdIn.next();
+		System.out.print("title ");
+		String title = stdIn.next();
+		
+		MyDate deadline = parseDate(until);
+		
+		addEvent(new DeadlinedEvent(title, deadline) );
+	}
+
 	private void handelDurationAdd() {
 		System.out.print("begin ");
 		String begin = stdIn.next();
