@@ -15,7 +15,12 @@ public class Scheduler {
 			System.out.print("$ ");
 			String command = stdIn.next();
 			if(command.equals("addevent")){
-				handleOneDayAdd();
+				String selEvent = stdIn.next();
+				if(selEvent.equalsIgnoreCase("oneday") ){
+					handleOneDayAdd();
+				}else if(selEvent.equalsIgnoreCase("duration")){
+					handelDurationAdd();
+				}
 			}else if(command.equals("list")){
 				for(int i = 0; i < n; i++){
 					System.out.println(events[i]);
@@ -28,9 +33,21 @@ public class Scheduler {
 		}
 	}
 	
+	private void handelDurationAdd() {
+		System.out.print("begin ");
+		String begin = stdIn.next();
+		System.out.print("end ");
+		String end = stdIn.next();
+		System.out.print("title ");
+		String title = stdIn.next();
+		
+		MyDate beginDate = parseDate(begin);
+		MyDate endDate = parseDate(end);
+		
+		addEvent(new DurationEvent(title, beginDate, endDate));
+	}
+
 	private void handleOneDayAdd() {
-		String selEvent = stdIn.next();
-		if(selEvent.equalsIgnoreCase("oneday")){
 			System.out.print("when ");
 			String date = stdIn.next();
 			System.out.print("title ");
@@ -38,8 +55,6 @@ public class Scheduler {
 			MyDate tmpDate = parseDate(date);
 			
 			addEvent(new OneDayEvent(title, tmpDate));
-		}
-		
 	}
 
 	private void searchEvent() {
@@ -47,9 +62,8 @@ public class Scheduler {
 		MyDate d = parseDate(str);
 		
 		for(int i = 0; i < n; i++){
-			if( events[i].equals(d) == true ){
+			if( events[i].equals(d)){
 				System.out.println(events[i]);
-				break;
 			}
 		}
 		
