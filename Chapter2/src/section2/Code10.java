@@ -16,10 +16,12 @@ public class Code10 {
 				thePolygon.addVertex(in.nextInt(), in.nextInt());
 			MyPoint1 p = new MyPoint1(in.nextInt(), in.nextInt());
 			in.close();
+			
 			if(thePolygon.contains(p))
 				System.out.println("Yes");
 			else
 				System.out.println("NO");
+			
 		}catch(FileNotFoundException e){
 			System.out.println("No data file exists.");
 			System.exit(1);
