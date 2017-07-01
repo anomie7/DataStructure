@@ -1,6 +1,6 @@
 package Scheduler;
 
-public class Event {
+public abstract class Event {
 	public String title;
 	
 	public Event(String title){
@@ -11,7 +11,5 @@ public class Event {
 		return title + ", ";
 	}
 	
-	public boolean equals(MyDate d){
-		return false;
-	}
+	public abstract boolean equals(MyDate d);
 }

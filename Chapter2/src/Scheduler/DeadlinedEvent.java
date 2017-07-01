@@ -13,17 +13,6 @@ public MyDate deadline;
 	}
 
 	public boolean equals(MyDate d){
-		if(deadline.year > d.year){
-			return true;	
-		}else if(deadline.year == d.year){
-			if(deadline.month > d.month){
-				return true;
-			}else if(deadline.month == d.month && deadline.day > d.day ){
-				return true;
-			}else if(deadline.month == d.month && deadline.day == d.day ){
-				return true;
-			}
-		}
-		return false;
+		return deadline.compareTo(d) >= 0;
 	}
 }

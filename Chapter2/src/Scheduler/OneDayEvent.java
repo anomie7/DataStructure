@@ -13,9 +13,7 @@ public class OneDayEvent extends Event{
 	}
 
 	public boolean equals(MyDate d){
-		if(date.year == d.year && date.month == d.month && date.day == d.day)
-			return true;
-		return false;
+		return this.date.compareTo(d ) == 0;
 	}
 	
 }
