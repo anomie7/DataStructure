@@ -1,5 +1,6 @@
 package Shape;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class ShapeApplication {
@@ -9,7 +10,6 @@ public class ShapeApplication {
 	private Scanner kb = new Scanner(System.in);
 
 	public void processCommand() {
-
 		while (true) {
 			System.out.print("$ ");
 			String command = kb.next();
@@ -18,24 +18,35 @@ public class ShapeApplication {
 			else if (command.equals("show") || command.equals("showdetail"))
 				handleShow(command.equals("showdetail"));
 			else if (command.equals("sort"))
-				bubbleSort();
+				Arrays.sort(shapes, 0, n);
 			else if (command.equals("exit"))
 				break;
 		}
 		kb.close();
 	}
 
-	private void bubbleSort() {
-		for (int i = n - 1; i > 0; i--)
-			for (int j = 0; j < i; j++) {
-				if (shapes[j].computeArea() > shapes[j + 1].computeArea()) {
-					Shape tmp = shapes[j];
-					shapes[j] = shapes[j + 1];
-					shapes[j + 1] = tmp;
-				}
-			}
-	}
-
+//	private void bubbleSort() {
+//		for (int i = n - 1; i > 0; i--)
+//			for (int j = 0; j < i; j++) {
+//				if (shapes[j].computeArea() > shapes[j + 1].computeArea()) {
+//					Shape tmp = shapes[j];
+//					shapes[j] = shapes[j + 1];
+//					shapes[j + 1] = tmp;
+//				}
+//			}
+//	}
+	
+//	private void bubbleSort(Comparable [] date, int size) {
+//		for (int i = size - 1; i > 0; i--)
+//			for (int j = 0; j < i; j++) {
+//				if (date[j].compareTo( date[j+1]) > 0) {
+//					Comparable tmp = date[j];
+//					date[j] = date[j + 1];
+//					date[j + 1] = tmp;
+//				}
+//			}
+//	}
+	
 	private void handleShow(boolean detailed) {
 		for (int i = 0; i < n; i++) {
 			System.out.println((i + 1) + ". " + shapes[i].toString());
